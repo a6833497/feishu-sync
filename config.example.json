@@ -1,0 +1,13 @@
+{
+  "_comment": "复制为 config.json 后填入真实飞书 app_id / app_secret / bitable_app_token。config.json 已加入 .gitignore，不要提交。",
+  "app_id": "cli_xxxxxxxxxxxxxxx",
+  "app_secret": "YOUR_FEISHU_APP_SECRET",
+  "bitable_app_token": "YOUR_BITABLE_APP_TOKEN",
+  "tables": {
+    "_example": {
+      "table_id": "tbl_xxxxxxxxxxxxxxx",
+      "name": "表中文名",
+      "key_fields": ["日期", "地区"]
+    }
+  }
+}

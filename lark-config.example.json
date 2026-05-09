@@ -1,0 +1,6 @@
+{
+  "_comment": "复制为 lark-config.json 后填入真实凭证。lark-config.json 已加入 .gitignore，不要提交。",
+  "app_id": "cli_xxxxxxxxxxxxxxx",
+  "app_secret": "YOUR_LARK_APP_SECRET",
+  "api_base": "https://open.larksuite.com"
+}

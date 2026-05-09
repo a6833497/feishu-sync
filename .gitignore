@@ -1,0 +1,47 @@
+# dependencies
+node_modules/
+
+# backups
+*.bak
+*.bak.*
+
+# python
+__pycache__/
+*.pyc
+*.pyo
+
+# env / secrets
+.env
+.env.*
+config.json
+*-session.json
+*.session.json
+session.json
+lark-session.json
+
+# logs
+*.log
+sync.log
+feishu-db-sync.log
+lark-export.log
+lark-target-sync.log
+
+# data exports (大文件 / 含业务数据)
+lark-exports/
+lark-exports-api/
+lark-exports-test/
+lark-exports-bak-*/
+lark_data.json
+snapshot.json
+.csv-schema-history/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# tar backups
+*.tgz
+*.tar.gz
+
+# more secrets
+lark-config.json
