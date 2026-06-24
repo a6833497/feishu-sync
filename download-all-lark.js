@@ -191,23 +191,15 @@ async function downloadSheetAsCSV(page, sheetName, fileName) {
   if (verifyErrors.length > 0) {
     console.log("\u26A0\uFE0F 验证发现 " + verifyErrors.length + " 个问题:");
     verifyErrors.forEach(e => console.log("  " + e));
-    try {
-      require("child_process").execSync(
-        "python3 " + path.join(__dirname, "feishu-notify.py") + ' "Lark数据验证: ' + verifyErrors.length + '个文件数据可能过旧"'
-      );
-    } catch(e) {}
+    // 2026-06-24 做减法：删除写错路径(__dirname，长期 broken)的验证告警调用，只留日志
   } else {
     console.log("\u2705 全部CSV验证通过");
   }
 
-  // 失败时退出码非0，触发告警
+  // 2026-06-24 做减法：删除「N个文件失败」P1 告警（失败计数含大量良性 tab，会自愈，无人响应）。
+  // 数据是否真到位由每日巡检(daily-audit) 的结果哨兵 lark_daily_kpi 滞后判定（一处说了算）。
+  // 仍保留非0退出码（供 wrapper 日志与退出语义）。
   if (failedFiles > 0) {
-    const msg = "⚠️ Lark数据下载: " + failedFiles + "个文件失败，请检查";
-    try {
-      require("child_process").execSync(
-        'python3 ' + path.join(__dirname, 'feishu-notify.py') + ' "' + msg.replace(/"/g, '\\"') + '"'
-      );
-    } catch (e) {}
     process.exit(1);
   }
 })().catch((e) => {
